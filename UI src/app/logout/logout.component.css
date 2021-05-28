@@ -1,0 +1,15 @@
+/*
+File Name: logout.component.css
+Component Name: logout
+Purpose: This is a css file which creates styling and formatting for the logout component
+Date: 4/15/2021
+Group Developer Name: Adv-Access Interns Spring 2021
+*/
+
+button{
+    color: white;
+    background-color: rgb(33, 190, 106);
+    padding: 8px 40px;
+    cursor: pointer;
+    margin-top: 10px;
+}

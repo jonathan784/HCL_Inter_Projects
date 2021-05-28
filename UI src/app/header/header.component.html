@@ -1,0 +1,46 @@
+<!--
+File Name: header.component.html
+Component Name: header
+Purpose: This is an HTML file for the header component which shows on the entire application the top bar space, aka what is in the header
+Date: 4/15/2021
+Group Developer Name: Adv-Access Interns Spring 2021
+-->
+
+
+<!--Top of the Page-->
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+       <h1><a>Advantage Assess</a></h1>
+       <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon> 
+       </button>
+       <span class="spacer"></span>
+      <h2> 
+       <a *ngIf="loginService.isUserLoggedOut()" mat-button routerLink="/add">Register</a>
+       <a *ngIf="loginService.isUserLoggedOut()" mat-button routerLink="/login">Login</a> 
+       <a class=Logout *ngIf="loginService.isUserLoggedIn()" mat-button routerLink="/logout">Logout</a> 
+      </h2>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<!--Side of the page (navigation tool on sidebar)-->
+  <mat-sidenav-container >
+    <mat-sidenav #sidenav>
+      <mat-nav-list class = "example container">
+  
+        <a class = "menu color" *ngIf="loginService.isUserLoggedIn()" mat-list-item [routerLink]="'/home'"> Home </a>
+        <a class = "menu color"  *ngIf="loginService.isUserLoggedIn()" mat-list-item [routerLink]="'/assessmentDisplay'"> My Assessments </a>
+        <a class = "menu color"  *ngIf="loginService.isUserLoggedIn()" mat-list-item [routerLink]="'/new.assessment'"> New Assessment </a>
+        <a class = "menu color"  *ngIf="loginService.isUserLoggedIn()" mat-list-item [routerLink]="'/reporting'"> Reporting </a>
+        <a class = "menu color"  *ngIf="loginService.isUserLoggedIn()" mat-list-item [routerLink]="'/logout'"> Logout </a>
+        <a class = "menu color"  mat-list-item (click)="sidenav.toggle()" href="" mat-list-item></a>
+  
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh;">
+  
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

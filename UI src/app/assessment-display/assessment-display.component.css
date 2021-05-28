@@ -1,0 +1,27 @@
+/*
+File Name: assessment-display.component.css
+Component Name: assessment-display
+Purpose: This is a css file which adds styling and formatting to the assessment-display component
+Date: 4/15/2021
+Group Developer Name: Adv-Access Interns Spring 2021
+*/
+
+table, th , td  {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5px;
+  }
+
+table tr:nth-child(odd){
+    background-color: white;
+}
+table tr:nth-child(even){
+    background-color: lightgray;
+}
+
+button{
+    color: white;
+    background-color: rgb(33, 190, 106);
+    padding: 8px 40px;
+    cursor: pointer;
+}
