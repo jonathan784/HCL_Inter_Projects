@@ -1,0 +1,19 @@
+/*
+File Name: new-assessment.component.css
+Component Name: new-assessment
+Purpose: This is a css file which adds styling and formatting to the assessment-display component
+Date: 4/15/2021
+Group Developer Name: Adv-Access Interns Spring 2021
+*/
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  
+button{
+    color: white;
+    background-color: rgb(33, 190, 106);
+    padding: 8px 40px;
+    cursor: pointer;
+}

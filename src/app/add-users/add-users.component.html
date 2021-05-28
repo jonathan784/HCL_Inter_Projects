@@ -1,0 +1,64 @@
+<!--
+File Name: add-users.component.html
+Component Name: add-users
+Purpose: This is an HTML file which allows the user to input and create a new user in the user collection using the user Service application. 
+Date: 4/15/2021
+Group Developer Name: Adv-Access Interns Spring 2021
+-->
+
+<h2 style = "margin-left: 20px;">Create User</h2>
+
+<!--This section is hidden when the submit button is clicked-->
+<div [hidden]="submitted" style="width: 400px; margin-left: 20px;">
+  <!--Form begins here, calls onSubmit() when the submit button is clicked-->
+  <form (ngSubmit)="save()">
+    <div class="form-group">
+      <div class="alert alert-warning" *ngIf='invalidLogin'style = "color: red;">{{invalidLoginMessage}}</div>
+
+      <!--Input for user name, binds to user.userName field-->
+      <label for="name" style = "font-weight: bold;">User name:</label>
+      <input type="text" class="form-control" id="Username" required [(ngModel)]="user.userName" name="Username">
+    </div>
+    
+    <!--Input for user password, binds to user.userPassword field-->
+    <div class="form-group">
+      <label for="userPassword" style = "font-weight: bold;">Password:</label>
+      <input type="password" class="form-control" id="Password" required [(ngModel)]="user.userPassword" name="Password">
+    </div>
+
+    <!--Input for user email, binds to user.userEmail-->
+    <div class="form-group">
+      <label for="userEmail" style = "font-weight: bold;">Email:</label>
+
+      <input type="text" class="form-control" id="userEmail" required [(ngModel)]="user.userEmail" name="Email">
+    </div>
+
+    <!--Input for user role, uses a radio button for selection, binds to user.userRole with either Super-Admin, Admin, or User-->
+    <span style = "font-weight: bold;">User Role: </span>
+    <div class="form-group">
+    <label><input type="radio" required [(ngModel)]="user.userRole" name="userRole" value="Super-Admin">Super-Admin</label>
+    <label><input type="radio" required [(ngModel)]="user.userRole" name="userRole" value="Admin">Admin</label>
+    <label><input type="radio" required [(ngModel)]="user.userRole" name="userRole" value="User">User</label>
+    </div>
+
+    <!--Input for account names, only really needed for admin field, binds to user.accountName, can also bind to user or to super-admin-->
+    <span style = "font-weight: bold;">If "Admin" role: </span>
+    <br>
+    <div class="form-group">
+      <label for="accountNames" style = "font-style: italic;">Account name(s) associated:</label>
+      <input type="text" class="form-control" id="accountName" [(ngModel)]="accountName" name="accountName">
+    </div>
+    <span style = "font-style: italic;">(Use "," to denote multiple accounts)</span>
+    <br>
+
+    <!--Submit button when calls onSubmit()-->
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<!--This section is shown when the submit button is clicked-->
+<div [hidden]="!submitted" style = "margin-left: 20px;">
+  <h4>You submitted successfully!</h4>
+  <!--This button creates a new user and displays the previous section when clicked-->
+    <button class="btn btn-success" (click)="newUser()">Add</button> 
+</div>

@@ -1,0 +1,47 @@
+<!--
+File Name: login.component.html
+Component Name: login
+Purpose: This is an HTML file which allows the user to login and validates their login against their input and against the user database 
+	in this component. 
+Date: 4/15/2021
+Group Developer Name: Adv-Access Interns Spring 2021
+-->
+
+<!--Section is hidden after a successful login-->
+<div [hidden]="loginSuccess" style = "margin-left: 20px;">
+<h1>Login</h1>
+<form class="form-group" #f="ngForm">
+	<!--Includes ngIf statements so that if there is an invalid login or a successful login the page is able to display this to the user-->
+	<div class="alert alert-warning" *ngIf='invalidLogin'style = "color: red;">{{errorMessage}}</div>
+	<div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+		<!--Section to input userEmail-->
+		<div class="form-group">
+			<label for="userEmail">User Email:</label> 
+			<br>
+			<input type="text"
+			class="form-control"  name="UserEmail" [(ngModel)]="user.userEmail"required placeholder="Enter Email" #Email = "ngModel"/>
+				<div class="alert alert-danger" *ngIf= "f.submitted && Email.errors?.required" style="font-weight: bold;">
+					Email is required!
+				</div>
+		</div>
+
+		<!--Section to input userPassword-->
+		<div class="form-group">
+			<label for="userPassword">Password:</label> 
+			<br>
+			<input type="password"
+			class="form-control" name="Password" [(ngModel)]="user.userPassword" required placeholder="Enter Password" #password = "ngModel"/>
+			<div class="alert alert-danger" *ngIf= "f.submitted && password.errors?.required" style="font-weight: bold;">
+				Password is required!
+			</div> 
+		</div>
+	<!--On click it calls the login() function-->
+	<button (click)=login() class="btn btn-success">Login</button>
+</form>
+</div>
+
+<!--If there is login success, this shows and the previous section is hidden-->
+<div [hidden]="!loginSuccess" style = "margin-left: 20px;"> 
+	<h1>Welcome to Advantage Access!</h1>
+
+</div>
